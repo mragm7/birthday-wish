@@ -1,238 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surprise for Zobii ✨</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>Happy Birthday Zobii ❤️</title>
 
-        body {
-            background-color: #fceade;
-            font-family: 'Quicksand', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
 
-        .screen-container {
-            width: 100%;
-            max-width: 500px;
-            height: 100vh;
-            background: #fff5f0;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Baloo 2',cursive;
+}
 
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease-in-out;
-        }
+body{
+background:linear-gradient(180deg,#ffd9e6,#ffeef6);
+overflow:hidden;
+height:100vh;
+color:#ff4f8b;
+}
 
-        .page.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+.page{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:30px;
+text-align:center;
+opacity:0;
+pointer-events:none;
+transform:scale(.95);
+transition:.6s;
+}
 
-        .typewriter-text {
-            font-family: 'Fredoka One', cursive;
-            color: #b76e79;
-            font-size: 1.6rem;
-            margin-bottom: 30px;
-            min-height: 70px;
-            max-width: 90%;
-            line-height: 1.4;
-        }
+.page.active{
+opacity:1;
+pointer-events:auto;
+transform:scale(1);
+}
 
-        .bear-img {
-            width: 220px;
-            height: auto;
-            margin-bottom: 30px;
-        }
+h1{
+font-size:42px;
+line-height:1.3;
+margin-bottom:20px;
+}
 
-        .btn-container {
-            display: flex;
-            gap: 20px;
-        }
+h2{
+font-size:34px;
+margin-top:15px;
+}
 
-        .btn {
-            font-family: 'Fredoka One', cursive;
-            padding: 12px 35px;
-            font-size: 1.3rem;
-            border: 3px solid #b76e79;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
+p{
+font-size:22px;
+line-height:1.7;
+max-width:700px;
+}
 
-        .btn-yes { background-color: #ffccd5; color: #b76e79; }
-        .btn-no { background-color: #ffffff; color: #b76e79; }
-        .btn-next { background-color: #ffe5ec; color: #b76e79; padding: 8px 20px; font-size: 0.9rem; border-radius: 20px; position: absolute; bottom: 40px; right: 30px; border: 2px solid #b76e79; cursor: pointer; font-family: 'Fredoka One', cursive; }
+.small{
+font-size:20px;
+margin-bottom:30px;
+}
 
-        .btn:hover, .btn-next:hover { transform: scale(1.05); }
+.name{
+animation:bounce 2s infinite;
+}
 
-        .wish-card {
-            background: #fff;
-            border: 3px solid #b76e79;
-            border-radius: 20px;
-            padding: 25px;
-            width: 85%;
-            box-shadow: 5px 5px 0px #b76e79;
-            margin-bottom: 40px;
-        }
-        .wish-card h2 { font-family: 'Fredoka One', cursive; color: #b76e79; margin-bottom: 15px; font-size: 1.5rem; }
-        .wish-card p { color: #666; font-size: 0.95rem; line-height: 1.6; text-align: justify; }
+.teddy{
+font-size:110px;
+margin:20px;
+animation:float 3s ease-in-out infinite;
+}
 
-        /* Multi Photo Layout matching video style */
-        .collage-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+.big{
+font-size:140px;
+animation:shake .7s infinite;
+}
 
-        .photo-frame {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            background: #fff;
-            border: 3px solid #b76e79;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .date-text {
-            font-family: 'Fredoka One', cursive;
-            color: #b76e79;
-            font-size: 1.2rem;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
-    </style>
+.cake{
+font-size:110px;
+margin:25px;
+animation:bounce 2s infinite;
+}
+
+.hug{
+font-size:130px;
+animation:float 3s infinite;
+margin:25px;
+}
+
+.final{
+font-size:90px;
+margin:25px;
+animation:spin 6s linear infinite;
+}
+
+.letter{
+max-width:700px;
+font-size:24px;
+line-height:1.8;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+color:#ff4f8b;
+}
+
+.buttons{
+display:flex;
+gap:25px;
+margin-top:25px;
+}
+
+button{
+border:none;
+padding:18px 45px;
+font-size:24px;
+border-radius:50px;
+cursor:pointer;
+background:#ff6fa8;
+color:white;
+transition:.3s;
+box-shadow:0 10px 25px rgba(255,111,168,.4);
+}
+
+button:hover{
+transform:scale(1.08);
+background:#ff4f8b;
+}
+
+button:active{
+transform:scale(.95);
+}
+
+#hearts{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+pointer-events:none;
+z-index:-1;
+}
+
+.heart{
+position:absolute;
+bottom:-40px;
+font-size:22px;
+animation:rise linear forwards;
+opacity:.8;
+}
+
+@keyframes rise{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+}
+
+@keyframes shake{
+
+0%{
+transform:translateX(-6px);
+}
+
+50%{
+transform:translateX(6px);
+}
+
+100%{
+transform:translateX(-6px);
+}
+
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:30px;
+}
+
+h2{
+font-size:28px;
+}
+
+p{
+font-size:18px;
+}
+
+.letter{
+font-size:20px;
+padding:22px;
+}
+
+.teddy{
+font-size:85px;
+}
+
+.big{
+font-size:105px;
+}
+
+.cake{
+font-size:80px;
+}
+
+.hug{
+font-size:90px;
+}
+
+.final{
+font-size:70px;
+}
+
+button{
+font-size:20px;
+padding:15px 35px;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+}
+</style>
 </head>
+
 <body>
 
-    <div class="screen-container">
+<div id="hearts"></div>
 
-        <div class="page active" id="page1">
-            <h1 class="typewriter-text" id="text1"></h1>
-            <img class="bear-img" src="https://media.tenor.com/98C_uG_E860AAAAi/milk-and-mocha.gif" alt="Bears Gift">
-            <div class="btn-container">
-                <button class="btn btn-yes" onclick="showPage('page3')">YES</button>
-                <button class="btn btn-no" onclick="showPage('page2')">NO</button>
-            </div>
-        </div>
+<section id="page1" class="page active">
 
-        <div class="page" id="page2">
-            <h1 class="typewriter-text" id="text2">Why did u click no!? 🥺</h1>
-            <img class="bear-img" src="https://media.tenor.com/86wN5Zz3v8gAAAAi/milk-and-mocha-bear.gif" alt="Sad Bear">
-            <button class="btn btn-yes" onclick="showPage('page1')">TRY AGAIN</button>
-        </div>
+<h1>
+I made something special for u ❤️<br>
+Do u wanna see it?
+</h1>
 
-        <div class="page" id="page3">
-            <h1 class="typewriter-text" id="text3"></h1>
-            <img class="bear-img" src="https://media.tenor.com/zM897S6b_38AAAAi/milk-mocha.gif" alt="Cake Cutting Bear">
-            <p style="font-family: 'Fredoka One', cursive; color: #b76e79; font-size: 1.2rem; margin-top:-15px;">I am ur gift 🎁</p>
-            <button class="btn-next" onclick="showPage('page4')">CLICK ME 👉</button>
-        </div>
+<div class="teddy">
+🧸🎁🐻
+</div>
 
-        <div class="page" id="page4">
-            <div class="wish-card">
-                <h2>MY WISH FOR U</h2>
-                <p>I hope your future brings you endless happiness, success, and peace in everything you do. May every dream you hold in your heart slowly come true and may you always have the strength and courage to keep moving forward no matter what happens. You deserve a beautiful life filled with love, laughter, and people who truly care about you. And no matter where life takes you, I'll always be here supporting you, believing in you, and wishing you nothing but the best! 🌸</p>
-            </div>
-            <button class="btn-next" onclick="showPage('page5')">CLICK ME 👉</button>
-        </div>
+<div class="buttons">
 
-        <div class="page" id="page5">
-            <h1 class="typewriter-text" id="text4"></h1>
-            <img class="bear-img" src="https://media.tenor.com/w9gS8I20-mEAAAAi/milk-and-mocha-bear-hug.gif" alt="Hug Bear">
-            <button class="btn-next" onclick="showPage('page6')">CLICK ME 👉</button>
-        </div>
+<button id="yesBtn">
+YES
+</button>
 
-        <div class="page" id="page6">
-            <h1 class="typewriter-text" id="text5"></h1>
-            <div class="collage-container">
-                <div class="photo-frame">
-                    <img src="https://i.ibb.co/s91HgtFD/image.jpg" alt="Zobii Pic 1">
-                </div>
-                <div class="photo-frame">
-                    <img src="https://i.ibb.co/Wp5xdc1Z/image.jpg" alt="Zobii Pic 2">
-                </div>
-            </div>
-            <p class="date-text">02.03.2026</p>
-        </div>
+<button id="noBtn">
+NO
+</button>
 
-    </div>
+</div>
 
-    <script>
-        function typeWriter(elementId, text, speed, callback) {
-            let i = 0;
-            const element = document.getElementById(elementId);
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                } else if (callback) {
-                    callback();
-                }
-            }
-            type();
-        }
+</section>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            typeWriter('text1', 'I made something special for u do u wanna see it?', 50);
-        });
+<section id="page2" class="page">
 
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            const targetPage = document.getElementById(pageId);
-            targetPage.classList.add('active');
+<h1>
+Why did u click No!? 🥺
+</h1>
 
-            if(pageId === 'page1') {
-                typeWriter('text1', 'I made something special for u do u wanna see it?', 50);
-            }
-            else if(pageId === 'page3') {
-                typeWriter('text3', 'HAPPY BIRTHDAY 🎉', 70);
-            }
-            else if(pageId === 'page5') {
-                typeWriter('text4', 'Virtual hug for ya!\nI MISS YOU ❤️', 60);
-            }
-            else if(pageId === 'page6') {
-                typeWriter('text5', 'Have a great year ahead ✨', 60);
-            }
-        }
-    </script>
+<div class="teddy big">
+🧸💥🐻
+</div>
+
+<p class="small">
+I worked so hard for this 😭
+</p>
+
+<button id="retryBtn">
+TRY AGAIN ❤️
+</button>
+
+</section>
+
+<section id="page3" class="page">
+
+<h1>
+🎉 HAPPY BIRTHDAY 🎉
+</h1>
+
+<h2 class="name">
+Zobii ❤️
+</h2>
+
+<div class="cake">
+
+🎂🎈✨
+
+</div>
+
+<p>
+
+Today is all about YOU.
+
+May your smile never fade,
+your dreams come true,
+and your heart always stay happy.
+
+</p>
+
+<button class="next">
+Next ➜
+</button>
+
+</section>
+
+<section id="page4" class="page">
+
+<h1>
+My Wish For You 💌
+</h1>
+
+<div class="letter">
+
+I hope every coming year
+brings more happiness,
+success,
+peace,
+beautiful memories
+and endless smiles.
+
+No matter what happens,
+
+always remember
+
+someone is cheering for you.
+
+Happy Birthday once again,
+Zobii ❤️
+
+</div>
+
+<button class="next">
+Next ➜
+</button>
+
+</section>
+
+<section id="page5" class="page">
+
+<h1>
+
+Virtual Hug For You 🤗
+
+</h1>
+
+<div class="hug">
+
+🧸❤️🧸
+
+</div>
+
+<h2>
+
+I MISS YOU ❤️
+
+</h2>
+
+<button class="next">
+
+Celebrate 🎉
+
+</button>
+
+</section>
+
+<section id="page6" class="page">
+
+<h1>
+
+🎊 HAPPY BIRTHDAY ZOBII 🎊
+
+</h1>
+
+<div class="final">
+
+🌸❤️🎂🎈✨🌸
+
+</div>
+
+<p>
+
+Thank you for being such an amazing friend.
+
+May this year become
+the best chapter of your life.
+
+Stay happy.
+
+Stay blessed.
+
+Keep smiling.
+
+❤️
+
+</p>
+
+<button id="restart">
+
+Start Again
+
+</button>
+
+</section>
+
+<script>
+const pages = document.querySelectorAll(".page");
+
+function showPage(id){
+
+pages.forEach(page=>{
+
+page.classList.remove("active");
+
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+document.getElementById("yesBtn").onclick=()=>{
+
+showPage("page3");
+
+};
+
+document.getElementById("noBtn").onclick=()=>{
+
+showPage("page2");
+
+};
+
+document.getElementById("retryBtn").onclick=()=>{
+
+showPage("page1");
+
+};
+
+const nextButtons=document.querySelectorAll(".next");
+
+let current=3;
+
+nextButtons.forEach(btn=>{
+
+btn.onclick=()=>{
+
+current++;
+
+showPage("page"+current);
+
+if(current==6){
+
+confetti();
+
+}
+
+};
+
+});
+
+document.getElementById("restart").onclick=()=>{
+
+current=3;
+
+showPage("page1");
+
+};
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=["💖","💕","❤️","💗","💝"][Math.floor(Math.random()*5)];
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*30)+"px";
+
+heart.style.animationDuration=(5+Math.random()*4)+"s";
+
+document.getElementById("hearts").appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},9000);
+
+}
+
+setInterval(createHeart,300);
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+let c=document.createElement("div");
+
+c.innerHTML=["🎉","✨","🎊","💖","🌸"][Math.floor(Math.random()*5)];
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-50px";
+
+c.style.fontSize=(15+Math.random()*25)+"px";
+
+c.style.transition="4s linear";
+
+document.body.appendChild(c);
+setTimeout(()=>{
+
+c.style.top="110vh";
+
+c.style.transform=`rotate(${Math.random()*720}deg)`;
+
+},100);
+
+setTimeout(()=>{
+
+c.remove();
+
+},4500);
+
+}
+
+}
+
+setInterval(()=>{
+
+if(document.getElementById("page6").classList.contains("active")){
+
+confetti();
+
+}
+
+},5000);
+</script>
+
 </body>
-    </html>
-    
+    </html>m
