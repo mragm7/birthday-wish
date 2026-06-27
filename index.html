@@ -1,600 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday to My Best Friend 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Happy Birthday Zobii ❤️</title>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0ec 50%, #ffd4e5 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            color: #d91e63;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Baloo 2',cursive;
-}
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-body{
-background:linear-gradient(180deg,#ffd9e6,#ffeef6);
-overflow:hidden;
-height:100vh;
-color:#ff4f8b;
-}
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: float-up 6s infinite ease-in;
+        }
 
-.page{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:30px;
-text-align:center;
-opacity:0;
-pointer-events:none;
-transform:scale(.95);
-transition:.6s;
-}
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0);
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) translateX(100px);
+            }
+        }
 
-.page.active{
-opacity:1;
-pointer-events:auto;
-transform:scale(1);
-}
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10;
+            padding: 20px;
+        }
 
-h1{
-font-size:42px;
-line-height:1.3;
-margin-bottom:20px;
-}
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 20;
+        }
 
-h2{
-font-size:34px;
-margin-top:15px;
-}
+        .content-wrapper {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(217, 30, 99, 0.15);
+            text-align: center;
+            animation: slideIn 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
 
-p{
-font-size:22px;
-line-height:1.7;
-max-width:700px;
-}
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
 
-.small{
-font-size:20px;
-margin-bottom:30px;
-}
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d91e63, #ff1744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: bounce 1s ease-in-out;
+        }
 
-.name{
-animation:bounce 2s infinite;
-}
+        .subtitle {
+            font-size: 1.5rem;
+            color: #d91e63;
+            margin-bottom: 30px;
+            font-weight: 600;
+            animation: fadeIn 1.2s ease-out;
+        }
 
-.teddy{
-font-size:110px;
-margin:20px;
-animation:float 3s ease-in-out infinite;
-}
+        .page-title {
+            font-size: 2.5rem;
+            color: #d91e63;
+            margin-bottom: 30px;
+            font-weight: 700;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-.big{
-font-size:140px;
-animation:shake .7s infinite;
-}
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
 
-.cake{
-font-size:110px;
-margin:25px;
-animation:bounce 2s infinite;
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.hug{
-font-size:130px;
-animation:float 3s infinite;
-margin:25px;
-}
+        .name-input-container {
+            position: relative;
+            margin: 30px 0;
+        }
 
-.final{
-font-size:90px;
-margin:25px;
-animation:spin 6s linear infinite;
-}
+        .name-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 2px solid #ffb6d9;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fff5f9, #ffebf2);
+            color: #d91e63;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
 
-.letter{
-max-width:700px;
-font-size:24px;
-line-height:1.8;
-background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-color:#ff4f8b;
-}
+        .name-input::placeholder {
+            color: #ffb6d9;
+        }
 
-.buttons{
-display:flex;
-gap:25px;
-margin-top:25px;
-}
+        .name-input:focus {
+            outline: none;
+            border-color: #d91e63;
+            box-shadow: 0 0 20px rgba(217, 30, 99, 0.3);
+            transform: scale(1.02);
+        }
 
-button{
-border:none;
-padding:18px 45px;
-font-size:24px;
-border-radius:50px;
-cursor:pointer;
-background:#ff6fa8;
-color:white;
-transition:.3s;
-box-shadow:0 10px 25px rgba(255,111,168,.4);
-}
+        .input-decoration {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            animation: spin 3s linear infinite;
+        }
 
-button:hover{
-transform:scale(1.08);
-background:#ff4f8b;
-}
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
 
-button:active{
-transform:scale(.95);
-}
+        .decorative-hearts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 2rem;
+        }
 
-#hearts{
-position:fixed;
-width:100%;
-height:100%;
-overflow:hidden;
-pointer-events:none;
-z-index:-1;
-}
+        .decorative-hearts span {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
 
-.heart{
-position:absolute;
-bottom:-40px;
-font-size:22px;
-animation:rise linear forwards;
-opacity:.8;
-}
+        .decorative-hearts span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
 
-@keyframes rise{
+        .decorative-hearts span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
-0%{
-transform:translateY(0) rotate(0deg);
-opacity:0;
-}
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
 
-10%{
-opacity:1;
-}
+        .btn {
+            padding: 12px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(217, 30, 99, 0.2);
+            margin-top: 15px;
+        }
 
-100%{
-transform:translateY(-120vh) rotate(360deg);
-opacity:0;
-}
+        .btn-next,
+        .btn-yes {
+            background: linear-gradient(135deg, #d91e63, #ff1744);
+            color: white;
+        }
 
-}
+        .btn-next:hover,
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(217, 30, 99, 0.4);
+        }
 
-@keyframes float{
+        .btn-next:active,
+        .btn-yes:active {
+            transform: translateY(-1px);
+        }
 
-0%{
-transform:translateY(0);
-}
+        .btn-no {
+            background: #f5f5f5;
+            color: #d91e63;
+            border: 2px solid #ffb6d9;
+            position: relative;
+        }
 
-50%{
-transform:translateY(-15px);
-}
+        .btn-no:hover {
+            background: #ffebf2;
+        }
 
-100%{
-transform:translateY(0);
-}
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
 
-}
+        .btn-back {
+            background: #f0f0f0;
+            color: #d91e63;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
 
-@keyframes bounce{
+        .btn-back:hover {
+            background: #ffebf2;
+        }
 
-0%,100%{
-transform:translateY(0);
-}
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-50%{
-transform:translateY(-15px);
-}
+        .love-message {
+            background: linear-gradient(135deg, #fff5f9, #ffebf2);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border: 2px solid #ffb6d9;
+        }
 
-}
+        .message-text {
+            font-size: 1.2rem;
+            color: #d91e63;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
 
-@keyframes shake{
+        .heart-animation {
+            font-size: 3rem;
+            animation: heartBeat 1s ease-in-out infinite;
+        }
 
-0%{
-transform:translateX(-6px);
-}
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
 
-50%{
-transform:translateX(6px);
-}
+        .question-container {
+            margin: 30px 0;
+        }
 
-100%{
-transform:translateX(-6px);
-}
+        .question {
+            font-size: 1.3rem;
+            color: #d91e63;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
 
-}
+        .reasons-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
 
-@keyframes spin{
+        .reason-card {
+            background: linear-gradient(135deg, #fff5f9, #ffebf2);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #ffb6d9;
+            position: relative;
+            animation: slideUp 0.6s ease-out;
+            transition: all 0.3s ease;
+        }
 
-100%{
-transform:rotate(360deg);
-}
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(217, 30, 99, 0.2);
+        }
 
-}
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@media(max-width:768px){
+        .reason-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #d91e63, #ff1744);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            line-height: 35px;
+            margin-bottom: 10px;
+        }
 
-h1{
-font-size:30px;
-}
+        .reason-text {
+            font-size: 1.1rem;
+            color: #d91e63;
+            margin: 10px 0;
+            font-weight: 500;
+        }
 
-h2{
-font-size:28px;
-}
+        .heart-icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 10px;
+            animation: swing 2s ease-in-out infinite;
+        }
 
-p{
-font-size:18px;
-}
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
 
-.letter{
-font-size:20px;
-padding:22px;
-}
+        .cake-container {
+            margin: 30px 0;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.teddy{
-font-size:85px;
-}
+        .cake {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            animation: cakeFloat 3s ease-in-out infinite;
+        }
 
-.big{
-font-size:105px;
-}
+        @keyframes cakeFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
 
-.cake{
-font-size:80px;
-}
+        .candle {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 30px;
+            background: #f4d4a8;
+            border-radius: 2px;
+            z-index: 2;
+        }
 
-.hug{
-font-size:90px;
-}
+        .candle-flame {
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 20px;
+            background: linear-gradient(to top, #ff6b00, #ffd700, #ffff00);
+            border-radius: 50% 50% 50% 0;
+            animation: flame 0.3s ease-in-out infinite;
+            z-index: 3;
+        }
 
-.final{
-font-size:70px;
-}
+        @keyframes flame {
+            0%, 100% {
+                transform: translateX(-50%) scaleY(1);
+            }
+            50% {
+                transform: translateX(-50%) scaleY(0.9);
+            }
+        }
 
-button{
-font-size:20px;
-padding:15px 35px;
-}
+        .cake-body {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
 
-.buttons{
-flex-direction:column;
-}
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            border-radius: 10px;
+        }
 
-}
-</style>
+        .layer-top {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            bottom: 70px;
+            width: 70%;
+            left: 15%;
+        }
+
+        .layer-middle {
+            background: linear-gradient(135deg, #ff1493, #db1a7c);
+            bottom: 40px;
+            width: 85%;
+            left: 7.5%;
+        }
+
+        .layer-bottom {
+            background: linear-gradient(135deg, #db1a7c, #c71585);
+            bottom: 0;
+            width: 100%;
+        }
+
+        .wish-section {
+            margin: 20px 0;
+        }
+
+        .wish-text {
+            font-size: 1.2rem;
+            color: #d91e63;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .wish-instruction {
+            font-size: 1rem;
+            color: #ff1744;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .candle-flame.extinguished {
+            animation: none;
+            opacity: 0;
+        }
+
+        .celebration-container {
+            position: relative;
+            margin: 30px 0;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .final-message {
+            animation: celebrateScale 0.8s ease-out;
+        }
+
+        @keyframes celebrateScale {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .final-text {
+            font-size: 1.5rem;
+            color: #d91e63;
+            margin: 10px 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .final-text.large {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d91e63, #ff1744);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gift-box-animation {
+            margin: 20px 0;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        .gift-box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff1744, #d91e63);
+            border-radius: 10px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 25px rgba(217, 30, 99, 0.3);
+        }
+
+        .ribbon {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+            top: 40%;
+            border-radius: 10px;
+            z-index: 2;
+        }
+
+        .box-content {
+            z-index: 3;
+        }
+
+        .final-message-box {
+            background: linear-gradient(135deg, #fff5f9, #ffebf2);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #ffb6d9;
+            margin: 25px 0;
+        }
+
+        #customWish {
+            font-size: 1.1rem;
+            color: #d91e63;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .final-buttons {
+            margin-top: 30px;
+        }
+
+        .btn-restart {
+            background: linear-gradient(135deg, #d91e63, #ff1744);
+            color: white;
+            padding: 12px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(217, 30, 99, 0.2);
+        }
+
+        .btn-restart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(217, 30, 99, 0.4);
+        }
+
+        .confetti-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+        }
+
+        .celebrate-title {
+            animation: titlePulse 0.8s ease-in-out;
+        }
+
+        @keyframes titlePulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content-wrapper {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            .message-text {
+                font-size: 1rem;
+            }
+
+            .reason-card {
+                padding: 15px;
+            }
+
+            .btn {
+                padding: 10px 30px;
+                font-size: 1rem;
+            }
+
+            .decorative-hearts {
+                font-size: 1.5rem;
+            }
+
+            .final-text {
+                font-size: 1.2rem;
+            }
+
+            .final-text.large {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .content-wrapper {
+                padding: 20px 15px;
+                max-width: 90%;
+            }
+
+            .message-text {
+                font-size: 0.95rem;
+            }
+
+            .question {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                margin-top: 10px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .name-input {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+
+            .cake {
+                width: 120px;
+                height: 120px;
+            }
+
+            .reason-card {
+                padding: 12px;
+            }
+
+            .reason-text {
+                font-size: 1rem;
+            }
+
+            .final-text {
+                font-size: 1rem;
+            }
+
+            .final-text.large {
+                font-size: 1.3rem;
+            }
+
+            .heart-animation {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<div id="hearts"></div>
-
-<section id="page1" class="page active">
-
-<h1>
-I made something special for u ❤️<br>
-Do u wanna see it?
-</h1>
-
-<div class="teddy">
-🧸🎁🐻
-</div>
-
-<div class="buttons">
-
-<button id="yesBtn">
-YES
-</button>
-
-<button id="noBtn">
-NO
-</button>
-
-</div>
-
-</section>
-
-<section id="page2" class="page">
-
-<h1>
-Why did u click No!? 🥺
-</h1>
-
-<div class="teddy big">
-🧸💥🐻
-</div>
-
-<p class="small">
-I worked so hard for this 😭
-</p>
-
-<button id="retryBtn">
-TRY AGAIN ❤️
-</button>
-
-</section>
-
-<section id="page3" class="page">
-
-<h1>
-🎉 HAPPY BIRTHDAY 🎉
-</h1>
-
-<h2 class="name">
-Zobii ❤️
-</h2>
-
-<div class="cake">
-
-🎂🎈✨
-
-</div>
-
-<p>
-
-Today is all about YOU.
-
-May your smile never fade,
-your dreams come true,
-and your heart always stay happy.
-
-</p>
-
-<button class="next">
-Next ➜
-</button>
-
-</section>
-
-<section id="page4" class="page">
-
-<h1>
-My Wish For You 💌
-</h1>
-
-<div class="letter">
-
-I hope every coming year
-brings more happiness,
-success,
-peace,
-beautiful memories
-and endless smiles.
-
-No matter what happens,
-
-always remember
-
-someone is cheering for you.
-
-Happy Birthday once again,
-Zobii ❤️
-
-</div>
-
-<button class="next">
-Next ➜
-</button>
-
-</section>
-
-<section id="page5" class="page">
-
-<h1>
-
-Virtual Hug For You 🤗
-
-</h1>
-
-<div class="hug">
-
-🧸❤️🧸
-
-</div>
-
-<h2>
-
-I MISS YOU ❤️
-
-</h2>
-
-<button class="next">
-
-Celebrate 🎉
-
-</button>
-
-</section>
-
-<section id="page6" class="page">
-
-<h1>
-
-🎊 HAPPY BIRTHDAY ZOBII 🎊
-
-</h1>
-
-<div class="final">
-
-🌸❤️🎂🎈✨🌸
-
-</div>
-
-<p>
-
-Thank you for being such an amazing friend.
-
-May this year become
-the best chapter of your life.
-
-Stay happy.
-
-Stay blessed.
-
-Keep smiling.
-
-❤️
-
-</p>
-
-<button id="restart">
-
-Start Again
-
-</button>
-
-</section>
-
-<script>
-const pages = document.querySelectorAll(".page");
-
-function showPage(id){
-
-pages.forEach(page=>{
-
-page.classList.remove("active");
-
-});
-
-document.getElementById(id).classList.add("active");
-
-}
-
-document.getElementById("yesBtn").onclick=()=>{
-
-showPage("page3");
-
-};
-
-document.getElementById("noBtn").onclick=()=>{
-
-showPage("page2");
-
-};
-
-document.getElementById("retryBtn").onclick=()=>{
-
-showPage("page1");
-
-};
-
-const nextButtons=document.querySelectorAll(".next");
-
-let current=3;
-
-nextButtons.forEach(btn=>{
-
-btn.onclick=()=>{
-
-current++;
-
-showPage("page"+current);
-
-if(current==6){
-
-confetti();
-
-}
-
-};
-
-});
-
-document.getElementById("restart").onclick=()=>{
-
-current=3;
-
-showPage("page1");
-
-};
-
-function createHeart(){
-
-const heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML=["💖","💕","❤️","💗","💝"][Math.floor(Math.random()*5)];
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=(18+Math.random()*30)+"px";
-
-heart.style.animationDuration=(5+Math.random()*4)+"s";
-
-document.getElementById("hearts").appendChild(heart);
-
-setTimeout(()=>{
-
-heart.remove();
-
-},9000);
-
-}
-
-setInterval(createHeart,300);
-
-function confetti(){
-
-for(let i=0;i<120;i++){
-
-let c=document.createElement("div");
-
-c.innerHTML=["🎉","✨","🎊","💖","🌸"][Math.floor(Math.random()*5)];
-
-c.style.position="fixed";
-
-c.style.left=Math.random()*100+"vw";
-
-c.style.top="-50px";
-
-c.style.fontSize=(15+Math.random()*25)+"px";
-
-c.style.transition="4s linear";
-
-document.body.appendChild(c);
-setTimeout(()=>{
-
-c.style.top="110vh";
-
-c.style.transform=`rotate(${Math.random()*720}deg)`;
-
-},100);
-
-setTimeout(()=>{
-
-c.remove();
-
-},4500);
-
-}
-
-}
-
-setInterval(()=>{
-
-if(document.getElementById("page6").classList.contains("active")){
-
-confetti();
-
-}
-
-},5000);
-</script>
-
-</body>
-    </html>m
+    <div class="container">
+        <!-- Background Elements -->
+        <div class="floating-hearts"></div>
+
+        <!-- Page 1: Name Input -->
+        <div class="page page-1 active">
+            <div class="content-wrapper">
+                <h1 class="title">Happy Birthday! 💕</h1>
+                <div class="subtitle">To My Best Friend</div>
+                
+                <div class="name-input-container">
+                    <input type="text" id="nameInput" class="name-input" placeholder="Enter Your Name Here...">
+                    <div class="input-decoration">✨</div>
+                </div>
+
+                <button class="btn btn-next" onclick="goToPage2()">
+                    Continue →
+                </button>
+
+                <div class="decorative-hearts">
+                    <span>💖</span>
+                    <span>💗</span>
+                    <span>💕</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Main Message -->
+        <div class="page page-2">
+            <div class="content-wrapper">
+                <h2 class="page-title" id="friendName">Dear Friend</h2>
+                <div class="love-message">
+                    <p class="message-text">
+                        Today is your special day, and I want 
