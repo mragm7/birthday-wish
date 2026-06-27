@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Zobii! ✨</title>
+    <title>Surprise for Zobii ✨</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap');
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            background-color: #fceade;
+            font-family: 'Quicksand', sans-serif;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -21,219 +23,216 @@
             overflow: hidden;
         }
 
-        .card-container {
-            width: 90%;
-            max-width: 400px;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .screen-container {
+            width: 100%;
+            max-width: 500px;
+            height: 100vh;
+            background: #fff5f0;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
         .page {
             position: absolute;
             width: 100%;
             height: 100%;
-            padding: 30px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            transform: translateX(100%);
             opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .page.active {
-            transform: translateX(0);
             opacity: 1;
+            pointer-events: auto;
         }
 
-        .page.exit {
-            transform: translateX(-100%);
-            opacity: 0;
+        .typewriter-text {
+            font-family: 'Fredoka One', cursive;
+            color: #b76e79;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            min-height: 70px;
+            max-width: 90%;
+            line-height: 1.4;
         }
 
-        h1 {
-            color: #ff477e;
-            font-size: 2rem;
-            margin-bottom: 15px;
+        .bear-img {
+            width: 220px;
+            height: auto;
+            margin-bottom: 30px;
         }
 
-        p {
-            color: #4a4a4a;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .gif-container {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
+        .btn-container {
+            display: flex;
+            gap: 20px;
         }
 
         .btn {
-            background: #ff477e;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 25px;
+            font-family: 'Fredoka One', cursive;
+            padding: 12px 35px;
+            font-size: 1.3rem;
+            border: 3px solid #b76e79;
+            border-radius: 15px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.3);
-            transition: transform 0.2s, background 0.2s;
+            transition: transform 0.2s;
         }
 
-        .btn:hover {
-            background: #ff5c8a;
-            transform: scale(1.05);
+        .btn-yes { background-color: #ffccd5; color: #b76e79; }
+        .btn-no { background-color: #ffffff; color: #b76e79; }
+        .btn-next { background-color: #ffe5ec; color: #b76e79; padding: 8px 20px; font-size: 0.9rem; border-radius: 20px; position: absolute; bottom: 40px; right: 30px; border: 2px solid #b76e79; cursor: pointer; font-family: 'Fredoka One', cursive; }
+
+        .btn:hover, .btn-next:hover { transform: scale(1.05); }
+
+        .wish-card {
+            background: #fff;
+            border: 3px solid #b76e79;
+            border-radius: 20px;
+            padding: 25px;
+            width: 85%;
+            box-shadow: 5px 5px 0px #b76e79;
+            margin-bottom: 40px;
+        }
+        .wish-card h2 { font-family: 'Fredoka One', cursive; color: #b76e79; margin-bottom: 15px; font-size: 1.5rem; }
+        .wish-card p { color: #666; font-size: 0.95rem; line-height: 1.6; text-align: justify; }
+
+        /* Multi Photo Layout matching video style */
+        .collage-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Birthday Cake Animation Page 3 */
-        .cake {
+        .photo-frame {
             position: relative;
-            width: 120px;
-            height: 90px;
-            background: #f1c40f;
-            border-radius: 10px 10px 0 0;
-            margin-top: 40px;
+            width: 160px;
+            height: 160px;
+            background: #fff;
+            border: 3px solid #b76e79;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
-        .cake::before {
-            content: "";
-            position: absolute;
-            background: #e74c3c;
-            width: 120px;
-            height: 20px;
-            border-radius: 10px 10px 0 0;
-            top: 0; left: 0;
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .candle {
-            position: absolute;
-            background: #3498db;
-            width: 8px;
-            height: 30px;
-            top: -30px;
-            left: 56px;
-        }
-        .flame {
-            position: absolute;
-            background: #f39c12;
-            width: 12px;
-            height: 12px;
-            border-radius: 50% 50% 20% 50%;
-            transform: rotate(-45deg);
-            top: -12px;
-            left: -2px;
-            animation: flicker 0.5s infinite alternate;
-        }
-
-        /* Confetti Effect */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #f2d74e;
-            position: absolute;
-            animation: confettiDrop 3s infinite linear;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes flicker {
-            0% { transform: rotate(-45deg) scale(1); }
-            100% { transform: rotate(-45deg) scale(1.2); }
-        }
-
-        @keyframes confettiDrop {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        .date-text {
+            font-family: 'Fredoka One', cursive;
+            color: #b76e79;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card-container" id="confetti-wrapper">
-        
-        <!-- PAGE 1: WELCOME -->
+    <div class="screen-container">
+
         <div class="page active" id="page1">
-            <div class="gif-container">🎈</div>
-            <h1>Hey Zobii! 👀</h1>
-            <p>Mujhe pata chala hai ke aaj kisi bohot special insan ka birthday hai... Kya aap dekhna chahti hain?</p>
-            <button class="btn" onclick="nextPage(1)">Haan, Dikhao! ✨</button>
+            <h1 class="typewriter-text" id="text1"></h1>
+            <img class="bear-img" src="https://media.tenor.com/98C_uG_E860AAAAi/milk-and-mocha.gif" alt="Bears Gift">
+            <div class="btn-container">
+                <button class="btn btn-yes" onclick="showPage('page3')">YES</button>
+                <button class="btn btn-no" onclick="showPage('page2')">NO</button>
+            </div>
         </div>
 
-        <!-- PAGE 2: TEASING -->
         <div class="page" id="page2">
-            <div class="gif-container">🤔</div>
-            <h1>Wait a minute...</h1>
-            <p>Pehle yeh batao, kya aap ready ho is surprise ke liye? Kyunki yeh duniya ki sab se cool best friend ke liye hai!</p>
-            <button class="btn" onclick="nextPage(2)">Haan main hi hoon, Next! 💖</button>
+            <h1 class="typewriter-text" id="text2">Why did u click no!? 🥺</h1>
+            <img class="bear-img" src="https://media.tenor.com/86wN5Zz3v8gAAAAi/milk-and-mocha-bear.gif" alt="Sad Bear">
+            <button class="btn btn-yes" onclick="showPage('page1')">TRY AGAIN</button>
         </div>
 
-        <!-- PAGE 3: THE WISH -->
         <div class="page" id="page3">
-            <div class="candle"><div class="flame" id="flame"></div></div>
-            <div class="cake"></div>
-            <h1 style="margin-top: 20px;">Happy Birthday, Zobii! 🎂🎉</h1>
-            <p id="wish-text">Aap jaisi best friend milna ek blessing hai. Hamesha haste muskurate raho! Make a wish and blow the candle!</p>
-            <button class="btn" id="blow-btn" onclick="blowCandle()">Blow Candle 💨</button>
+            <h1 class="typewriter-text" id="text3"></h1>
+            <img class="bear-img" src="https://media.tenor.com/zM897S6b_38AAAAi/milk-mocha.gif" alt="Cake Cutting Bear">
+            <p style="font-family: 'Fredoka One', cursive; color: #b76e79; font-size: 1.2rem; margin-top:-15px;">I am ur gift 🎁</p>
+            <button class="btn-next" onclick="showPage('page4')">CLICK ME 👉</button>
+        </div>
+
+        <div class="page" id="page4">
+            <div class="wish-card">
+                <h2>MY WISH FOR U</h2>
+                <p>I hope your future brings you endless happiness, success, and peace in everything you do. May every dream you hold in your heart slowly come true and may you always have the strength and courage to keep moving forward no matter what happens. You deserve a beautiful life filled with love, laughter, and people who truly care about you. And no matter where life takes you, I'll always be here supporting you, believing in you, and wishing you nothing but the best! 🌸</p>
+            </div>
+            <button class="btn-next" onclick="showPage('page5')">CLICK ME 👉</button>
+        </div>
+
+        <div class="page" id="page5">
+            <h1 class="typewriter-text" id="text4"></h1>
+            <img class="bear-img" src="https://media.tenor.com/w9gS8I20-mEAAAAi/milk-and-mocha-bear-hug.gif" alt="Hug Bear">
+            <button class="btn-next" onclick="showPage('page6')">CLICK ME 👉</button>
+        </div>
+
+        <div class="page" id="page6">
+            <h1 class="typewriter-text" id="text5"></h1>
+            <div class="collage-container">
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co/s91HgtFD/image.jpg" alt="Zobii Pic 1">
+                </div>
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co/Wp5xdc1Z/image.jpg" alt="Zobii Pic 2">
+                </div>
+            </div>
+            <p class="date-text">02.03.2026</p>
         </div>
 
     </div>
 
     <script>
-        function nextPage(currentPage) {
-            const current = document.getElementById(`page${currentPage}`);
-            const next = document.getElementById(`page${currentPage + 1}`);
-            
-            current.classList.remove('active');
-            current.classList.add('exit');
-            
-            next.classList.add('active');
+        function typeWriter(elementId, text, speed, callback) {
+            let i = 0;
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
         }
 
-        function blowCandle() {
-            const flame = document.getElementById('flame');
-            const wishText = document.getElementById('wish-text');
-            const blowBtn = document.getElementById('blow-btn');
-            
-            // Extinguish flame
-            flame.style.display = 'none';
-            wishText.innerHTML = "✨ May all your wishes come true! ✨<br>Thank you for being the most amazing best friend ever! 🌟";
-            blowBtn.style.display = 'none';
-            
-            // Trigger Confetti
-            createConfetti();
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            typeWriter('text1', 'I made something special for u do u wanna see it?', 50);
+        });
 
-        function createConfetti() {
-            const wrapper = document.getElementById('confetti-wrapper');
-            const colors = ['#ff477e', '#ff70a6', '#ff97b7', '#fbc4ab', '#ffcc00', '#4cc9f0'];
-            
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                confetti.style.width = Math.random() * 8 + 5 + 'px';
-                confetti.style.height = confetti.style.width;
-                wrapper.appendChild(confetti);
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.add('active');
+
+            if(pageId === 'page1') {
+                typeWriter('text1', 'I made something special for u do u wanna see it?', 50);
+            }
+            else if(pageId === 'page3') {
+                typeWriter('text3', 'HAPPY BIRTHDAY 🎉', 70);
+            }
+            else if(pageId === 'page5') {
+                typeWriter('text4', 'Virtual hug for ya!\nI MISS YOU ❤️', 60);
+            }
+            else if(pageId === 'page6') {
+                typeWriter('text5', 'Have a great year ahead ✨', 60);
             }
         }
     </script>
 </body>
-  </html>
-                                                                     
+    </html>
+    
